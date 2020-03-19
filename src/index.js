@@ -38,16 +38,22 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-   let morseString = [];
+  let exprArray = [];
+  let morseArray = [];
+  for (let j = 0; j < expr.length; j = j + 10) {
+    exprArray.push(expr.slice(j,j+10));
+  }
+  console.log(exprArray);
   for (let i = 0; i < expr.length; i=i+2) {
     if (expr[i] == '1' && expr[i+1] == '0') {
-       console.log('.');
+       morseArray.push('.');
     }
     if (expr[i] == '1' && expr[i+1] == '1') {
-       console.log('-');
+       morseArray.push('-');
     }
   }
-  return;
+  let morseString = morseArray.join('');
+  return morseString;
 }
 
 module.exports = {
